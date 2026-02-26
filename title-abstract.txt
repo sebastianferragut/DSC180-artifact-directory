@@ -1,5 +1,22 @@
 Title:
-<MY SUPER AWESOME PROJECT TITLE>
+<Agentic Privacy Control Center>
 
 Abstract:
-<MY SUPER AWESOME PROJECT ABSTRACT>
+<Privacy by Design has become central to regulatory and design discourse, yet
+operationalizing privacy principles in practice remains labor-intensive, retro-
+spective, and costly. Traditional privacy reviews—such as expert audits and
+impact assessments lack dynamism and do not scale well to rapidly evolving
+digital platforms. We present the Agentic Privacy Control Center, an end-to-
+end system that automatically discovers, structures, visualizes, and actuates
+privacy settings across online platforms.
+Our system integrates deterministic interface crawling, vision-based setting
+extraction, semantic classification, and a planner–executor–verifier browser
+agent powered by large language models. The pipeline produces a normal-
+ized cross-platform privacy settings database that supports interactive visual-
+ization and safe, centralized setting modification.
+We demonstrate that agentic AI can reliably navigate heterogeneous privacy
+interfaces, detect confirmation flows, and modify settings across platforms
+without platform-specific hard-coding. Our results suggest that agentic sys-
+tems can function as scalable intermediaries for privacy analysis and configu-
+ration, supporting both comparative research and practitioner-facing privacy
+design workflows.>

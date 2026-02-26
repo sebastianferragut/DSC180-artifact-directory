@@ -43,12 +43,12 @@
       <div class="hero-text">
         <h1>Agentic Privacy Control Center</h1>
         <p class="subtitle">
-          PLACEHOLDER FOR SUMMARY
+          An end-to-end system for discovering, structuring, visualizing, and safely modifying privacy settings across online platforms with agentic browser automation.
         </p>
 
         <div class="cta-row">
           <!-- report.pdf is in repo root; from /docs it's ../report.pdf -->
-          <a class="btn" href="../report.pdf" target="_blank" rel="noopener">View Report (PDF)</a>
+          <a class="btn" href="https://github.com/sebastianferragut/DSC180-artifact-directory/blob/main/report.pdf" target="_blank" rel="noopener">View Report (PDF)</a>
           <a class="btn btn-ghost" href="https://github.com/sebastianferragut/DSC180A_PrivacyProject" target="_blank" rel="noopener">
             GitHub Repo
           </a>
@@ -60,7 +60,6 @@
       <div class="hero-card card">
         <h3>Quick Links</h3>
         <ul class="link-list">
-          <li><a href="../report.pdf" target="_blank" rel="noopener">Report PDF</a></li>
           <li><a href="https://github.com/sebastianferragut/DSC180-artifact-directory" target="_blank" rel="noopener">Website Repo</a></li>
         </ul>
       </div>
@@ -71,7 +70,13 @@
       <div class="section-head">
         <h2>Introduction and Abstract</h2>
         <p class="muted">
-          Modern digital platforms offer extensive privacy controls, yet in practice, managing these settings can be complex. Users often struggle to locate privacy options buried deep within account menus, and even when found, the descriptions can be vague or difficult to interpret. As a result, users are frequently unaware of what data is being collected, how it is used, or how to meaningfully adjust their privacy preferences.
+          Modern digital platforms offer extensive privacy controls, yet in practice managing these settings is still difficult. Privacy options are often buried in platform-specific menus, described inconsistently, and distributed across multiple pages and confirmation dialogs.
+        </p>
+        <p class="muted">
+          This project reframes privacy configuration as a systems problem: automatically discover settings, normalize them into a common representation, and expose them through a centralized interface that supports both understanding and action.
+        </p>
+        <p class="muted">
+          The Agentic Privacy Control Center combines structured extraction, visualization, and browser-based agentic execution to help users and researchers inspect privacy settings across platforms without writing custom automation for each site.
         </p>
       </div>
 
@@ -79,21 +84,46 @@
         <div class="card">
           <h3>Problem</h3>
           <p>
-            Our project begins with this problem: privacy controls exist, but accessibility and clarity remain significant problems.
+            Privacy controls exist, but accessibility and clarity remain significant barriers. Existing workflows typically require manual navigation, platform-specific knowledge, and repeated review of unclear option text before users can make informed decisions.
           </p>
         </div>
         <div class="card">
-          <h3>Contribution</h3>
+          <h3>Motivation and Contribution</h3>
           <p>
-              We propose an agentic chatbot interface that serves as a centralized privacy control center. By leveraging natural language processing, the chatbot can understand users' instructions about privacy settings preferences and change it for them. We also developed an interactive dashboard that visualizes privacy data, making it easier for users to understand and navigate their privacy preferences effectively.
-            </p>
-          </div>
+            We propose an agentic privacy control center with two user-facing components: an interactive dashboard for cross-platform privacy setting exploration and an agentic chatbot that interprets natural-language requests and executes setting changes in the browser.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Key Contributions</h3>
+          <ul>
+            <li>End-to-end pipeline for discovering and extracting privacy settings from heterogeneous interfaces.</li>
+            <li>Normalized cross-platform privacy settings database for comparison and downstream analysis.</li>
+            <li>Interactive dashboard for browsing settings by platform and privacy category.</li>
+            <li>Planner-executor-verifier agent workflow for privacy setting modification without platform-specific hard-coding.</li>
+            <li>Prototype validation showing reliable navigation of confirmation flows and UI variation.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>System Overview</h3>
+          <p>
+            The system operates in three stages: collect settings from platform interfaces, structure the outputs into a shared schema, and expose the results through visualization and an agentic control layer.
+          </p>
+          <ul>
+            <li><strong>Extraction:</strong> deterministic crawling and vision-assisted parsing of settings pages.</li>
+            <li><strong>Normalization:</strong> semantic labeling and storage in a unified database.</li>
+            <li><strong>Interaction:</strong> dashboard inspection plus agentic execution for user-requested changes.</li>
+          </ul>
+        </div>
       </div>
 
       <div class="card callout">
         <h3>Abstract</h3>
         <p>
-          PLACEHOLDER FOR ABSTRACT
+          Privacy by Design is increasingly important, but operationalizing privacy reviews and user configuration remains labor-intensive and difficult to scale. We present the Agentic Privacy Control Center, an end-to-end system that automatically discovers, structures, visualizes, and actuates privacy settings across online platforms. Our pipeline combines interface crawling, vision-based setting extraction, semantic classification, and a planner-executor-verifier browser agent powered by large language models. The resulting normalized settings database supports centralized inspection and safe privacy setting modification, demonstrating how agentic systems can serve as scalable intermediaries for privacy analysis and configuration workflows.
         </p>
       </div>
     </section>
@@ -103,34 +133,82 @@
       <div class="section-head">
         <h2>Methods</h2>
         <p class="muted">
-          Placeholder
+          We built the system as a modular pipeline spanning data collection, structured storage, dashboard visualization, and agentic execution. The implementation is designed to support cross-platform privacy settings without tightly coupling logic to a single interface.
         </p>
       </div>
 
       <div class="grid">
         <div class="card">
-          <h3>Database</h3>
+          <h3>Data Pipeline</h3>
+          <p>
+            The data pipeline focuses on discovering privacy settings pages, extracting candidate controls, and transforming those observations into a normalized dataset that can be compared across platforms.
+          </p>
           <ul>
-            <li>placeholder</li>
+            <li>Deterministic interface crawling to traverse settings menus and collect page-level evidence.</li>
+            <li>Vision/text extraction to capture labels, control types, and surrounding context from heterogeneous UIs.</li>
+            <li>Semantic categorization into shared privacy themes (e.g., visibility, authentication, data collection).</li>
+            <li>Structured storage in a cross-platform schema to support dashboard queries and agent planning.</li>
           </ul>
+          <figure class="figure">
+            <a href="assets/dataset_placeholder.png" target="_blank" rel="noopener">
+              <img class="media" src="assets/dataset_placeholder.png" alt="Dataset pipeline placeholder showing privacy settings extraction and normalization flow." />
+            </a>
+            <figcaption class="caption">Figure: Dataset construction workflow used to extract and normalize platform privacy settings.</figcaption>
+          </figure>
         </div>
 
         <div class="card">
-          <h3>Dashboard</h3>
+          <h3>Dashboard and Visualization</h3>
+          <p>
+            We developed an interactive dashboard that provides a centralized view of extracted privacy settings and categories, making it easier to compare platform behavior and identify actionable controls.
+          </p>
           <ul>
             <li>We developed an interactive dashboard that visualizes privacy settings across platforms, allowing users 
               to explore categories such as data collection, authentication, and visibility controls. The dashboard
               transforms complex privacy configurations across platforms into a clear centralized overview to support
               informed decision making. 
             </li>
+            <li>Designed for fast inspection by both users (configuration support) and researchers (comparative analysis).</li>
+            <li>Backed by the normalized schema so interface differences do not break the high-level view.</li>
           </ul>
+          <figure class="figure">
+            <a href="assets/dashboard_placeholder.png" target="_blank" rel="noopener">
+              <img class="media" src="assets/dashboard_placeholder.png" alt="Interactive dashboard treemap placeholder for comparing privacy settings across platforms." />
+            </a>
+            <figcaption class="caption">Figure: Interactive treemap dashboard (size encodes metric; color encodes platform) with zoom, filter, search, and guided mode.</figcaption>
+          </figure>
         </div>
       </div>
 
       <div class="card">
-        <h3>Agentic Chatbot</h3>
+        <h3>Agent Workflow</h3>
+        <p>
+          The agentic layer translates natural-language privacy requests into browser actions using a planner-executor-verifier pattern. This enables the system to adapt to interface variation while preserving safety checks before and after setting updates.
+        </p>
         <ul>
-          <li>placeholder</li>
+          <li><strong>Planner:</strong> interprets user intent and maps it to candidate platform settings and actions.</li>
+          <li><strong>Executor:</strong> navigates the platform UI, interacts with controls, and handles multi-step flows.</li>
+          <li><strong>Verifier:</strong> confirms that the intended setting state was reached and flags ambiguities.</li>
+          <li>Supports confirmation dialogs and heterogeneous layouts without platform-specific hard-coded scripts.</li>
+        </ul>
+        <figure class="figure figure-compact">
+          <a href="assets/chatbot_placeholder.png" target="_blank" rel="noopener">
+            <img class="media" src="assets/chatbot_placeholder.png" alt="Chatbot and browser agent workflow placeholder showing planner, executor, and verifier stages." />
+          </a>
+          <figcaption class="caption">Figure: Agentic chatbot interaction flow for planning, executing, and verifying privacy setting changes.</figcaption>
+        </figure>
+      </div>
+
+      <div class="card callout">
+        <h3>Evaluation / Validation</h3>
+        <p>
+          Evaluation in this stage emphasizes system behavior and workflow reliability rather than final production deployment metrics. We validate whether the pipeline can consistently discover settings, preserve meaningful structure, and execute requested changes with verification.
+        </p>
+        <ul>
+          <li>Pipeline validation: extracted settings are categorized and stored in a form usable by the dashboard and agent.</li>
+          <li>Execution validation: the agent successfully navigates settings interfaces and confirmation flows.</li>
+          <li>Verifier checks reduce silent failures by confirming post-action state whenever possible.</li>
+          <li>High-level results indicate agentic automation is feasible for scalable privacy configuration support.</li>
         </ul>
       </div>
     </section>
@@ -146,24 +224,32 @@
 
       <div class="grid">
         <div class="card">
-          <h3>Key Findings</h3>
+          <h3>Key Results and Insights</h3>
+          <p>
+            The prototype shows that privacy settings can be treated as a cross-platform structured problem rather than a collection of one-off manual workflows. Combining normalization with agentic execution creates a useful bridge between privacy analysis and direct configuration.
+          </p>
           <ul>
-            <li>placeholder</li>
+            <li>Agentic browser automation can navigate heterogeneous privacy interfaces with limited platform-specific logic.</li>
+            <li>A normalized settings database improves interpretability and supports comparison across platforms.</li>
+            <li>Verification steps are essential when executing privacy changes to reduce ambiguity and user risk.</li>
           </ul>
         </div>
 
         <div class="card">
           <h3>Limitations</h3>
           <ul>
-            <li>placeholder</li>
+            <li>Prototype coverage is limited by platform variation, UI changes, and access/authentication constraints.</li>
+            <li>Vision/LLM-based interpretation may misread labels or intent in ambiguous interfaces.</li>
+            <li>Validation is currently high-level and should be expanded with broader platform and task benchmarks.</li>
+            <li>Safety and rollback mechanisms need stronger guarantees before production deployment.</li>
           </ul>
         </div>
       </div>
 
       <div class="card">
-        <h3>Next Steps</h3>
+        <h3>Future Work</h3>
         <p>
-          placeholder
+          Future work includes expanding platform coverage, improving semantic labeling quality, strengthening verifier and rollback behavior, and running more systematic evaluations of success rate, robustness, and user trust. A longer-term direction is integrating policy-aware guidance so the system can explain tradeoffs between convenience, visibility, and data sharing before applying changes.
         </p>
       </div>
 
@@ -182,7 +268,7 @@
           <div class="avatar" aria-hidden="true">SF</div>
           <div>
             <h3 class="person-name">Sebastian Ferragut</h3>
-            <p class="muted small">Role / Focus</p>
+            <p class="muted small">Led the initial crawler prototype, designed and implemented the agentic chatbot (planner-executor-verifier), and supported end-to-end system integration and project coordination.</p>
             <p class="small">
               <a href="mailto:ferragut.sebastian@gmail.com">ferragut.sebastian@gmail.com</a>
               <span class="sep">•</span>
@@ -192,10 +278,10 @@
         </div>
         
         <div class="card person">
-          <div class="avatar" aria-hidden="true">TM</div>
+          <div class="avatar" aria-hidden="true">NW</div>
           <div>
             <h3 class="person-name">Nian-Nian Wang</h3>
-            <p class="muted small">Role / Focus</p>
+            <p class="muted small">Built the Gemini-powered database pipeline to extract UI text/state from screenshots, reconstruct URLs, annotate click depth, and semantically categorize settings for chatbot and dashboard use.</p>
             <p class="small">
               <a href="mailto:niw002@ucsd.edu">niw002@ucsd.edu</a>
               <span class="sep">•</span>
@@ -205,14 +291,40 @@
         </div>
 
         <div class="card person">
-          <div class="avatar" aria-hidden="true">TM</div>
+          <div class="avatar" aria-hidden="true">JH</div>
           <div>
-            <h3 class="person-name">Teammate Name</h3>
-            <p class="muted small">Role / Focus</p>
+            <h3 class="person-name">Jesse Huang</h3>
+            <p class="muted small">Improved crawler success rate to reach toggle pages, increased Gemini steering robustness, added click-count depth proxies, and cleaned/verified screenshot and URL captures for database ingestion.</p>
             <p class="small">
-              <a href="mailto:teammate@example.com">teammate@example.com</a>
+              <a href="mailto:jeh027@ucsd.edu">jeh027@ucsd.edu</a>
               <span class="sep">•</span>
-              <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+              <a href="https://github.com/jeh027" target="_blank" rel="noopener">GitHub</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="card person">
+          <div class="avatar" aria-hidden="true">JH</div>
+          <div>
+            <h3 class="person-name">Jimmy Huang</h3>
+            <p class="muted small">Led treemap and supporting visualization development, implemented cross-platform interaction views, and collaborated on fitting the visualization into the website experience.</p>
+            <p class="small">
+              <a href="mailto:jih103@ucsd.edu">jih103@ucsd.edu</a>
+              <span class="sep">•</span>
+              <a href="https://github.com/Jimxthy" target="_blank" rel="noopener">GitHub</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="card person">
+          <div class="avatar" aria-hidden="true">AV</div>
+          <div>
+            <h3 class="person-name">Arya Verma</h3>
+            <p class="muted small">Co-implemented the visualization dashboard with a focus on website design and data compartmentalization, refining the interface to better communicate privacy design insights to technical and non-technical audiences.</p>
+            <p class="small">
+              <a href="mailto:a5verma@ucsd.edu">a5verma@ucsd.edu</a>
+              <span class="sep">•</span>
+              <a href="https://github.com/averma205" target="_blank" rel="noopener">GitHub</a>
             </p>
           </div>
         </div>

@@ -279,6 +279,31 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+.figure {
+  margin: var(--s1) 0 0 0;
+}
+
+.figure a {
+  display: block;
+}
+
+.figure .media {
+  max-width: 100%;
+}
+
+.figure-compact {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.caption {
+  margin: 8px 2px 0 2px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
 /* Footer */
 .footer {
   border-top: 1px solid var(--border);
