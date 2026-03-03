@@ -304,6 +304,16 @@ h3 {
   line-height: 1.45;
 }
 
+.figure-block {
+  margin-top: var(--s1);
+}
+
+.figure-caption {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
 /* Footer */
 .footer {
   border-top: 1px solid var(--border);
