@@ -19,6 +19,7 @@
 
       <nav class="nav" aria-label="Primary">
         <a href="#intro">Introduction/Abstract</a>
+        <a href="#demo">Demo</a>
         <a href="#methods">Methods</a>
         <a href="#discussion">Discussion/Conclusion</a>
         <a href="#team">Meet the Team</a>
@@ -31,6 +32,7 @@
 
     <div class="mobile-nav container" id="mobileNav">
       <a href="#intro">Introduction/Abstract</a>
+      <a href="#demo">Demo</a>
       <a href="#methods">Methods</a>
       <a href="#discussion">Discussion/Conclusion</a>
       <a href="#team">Meet the Team</a>
@@ -43,7 +45,10 @@
       <div class="hero-text">
         <h1>Agentic Privacy Control Center</h1>
         <p class="subtitle">
-          An end-to-end system for discovering, structuring, visualizing, and safely modifying privacy settings across online platforms with agentic browser automation.
+          Agentic Privacy Control Center unifies privacy-setting discovery, comparison, and safe in-browser updates across online platforms.
+        </p>
+        <p class="subtitle">
+          It helps end users, researchers, and privacy auditors understand controls faster and apply verified changes without platform-specific scripting.
         </p>
 
         <div class="cta-row">
@@ -53,6 +58,16 @@
             GitHub Repo
           </a>
         </div>
+
+        <div class="card key-results-strip">
+          <h3>Key Results</h3>
+          <ul>
+            <li><a href="#results">Prototype agent runs complete multi-step privacy flows with explicit verification checks.</a></li>
+            <li><a href="#discussion-figure">Cross-platform friction comparison exposes effort asymmetries in privacy-critical tasks.</a></li>
+            <li><a href="#limitations">Current limits are explicit: coverage breadth, interpretation ambiguity, and production safety hardening.</a></li>
+            <li><a href="#future-work">Next milestones prioritize broader platform coverage and stronger rollback guarantees.</a></li>
+          </ul>
+        </div>
       </div>
 
       <!-- Optional: Add a hero image later (keep it lightweight) -->
@@ -61,6 +76,7 @@
         <h3>Quick Links</h3>
         <ul class="link-list">
           <li><a href="https://github.com/sebastianferragut/DSC180-artifact-directory" target="_blank" rel="noopener">Website Repo</a></li>
+          <li><a href="#demo">Demo Video (YouTube link pending)</a></li>
         </ul>
       </div>
     </section>
@@ -126,6 +142,16 @@
           Privacy by Design is increasingly important, but operationalizing privacy reviews and user configuration remains labor-intensive and difficult to scale. We present the Agentic Privacy Control Center, an end-to-end system that automatically discovers, structures, visualizes, and actuates privacy settings across online platforms. Our pipeline combines interface crawling, vision-based setting extraction, semantic classification, and a planner-executor-verifier browser agent powered by large language models. The resulting normalized settings database supports centralized inspection and safe privacy setting modification, demonstrating how agentic systems can serve as scalable intermediaries for privacy analysis and configuration workflows.
         </p>
       </div>
+
+      <div class="card callout">
+        <h3>Scope</h3>
+        <ul>
+          <li><strong>Included:</strong> cross-platform settings discovery, normalization, dashboard inspection, and verified agentic browser actions.</li>
+          <li><strong>Not included:</strong> full production hardening, complete platform coverage, or automated legal/policy determinations.</li>
+          <li><strong>Current stage:</strong> prototype validation focused on workflow reliability and interpretability.</li>
+        </ul>
+      </div>
+
     </section>
 
     <!-- METHODS -->
@@ -145,15 +171,15 @@
           </p>
           <ul>
             <li>Deterministic interface crawling to traverse settings menus and collect page-level evidence.</li>
-            <li>Vision/text extraction to capture labels, control types, and surrounding context from heterogeneous UIs.</li>
+            <li>Vision/text extraction to capture labels, control types, and surrounding context from heterogeneous user interfaces (UIs).</li>
             <li>Semantic categorization into shared privacy themes (e.g., visibility, authentication, data collection).</li>
             <li>Structured storage in a cross-platform schema to support dashboard queries and agent planning.</li>
           </ul>
-          <figure class="figure">
-            <a href="assets/dataset_placeholder.png" target="_blank" rel="noopener">
-              <img class="media" src="assets/dataset_placeholder.png" alt="Dataset pipeline placeholder showing privacy settings extraction and normalization flow." />
+          <figure class="figure figure-readable">
+            <a href="assets/dataset_flow.png" target="_blank" rel="noopener">
+              <img class="media" src="assets/dataset_flow.png" alt="Pipeline figure showing screenshot extraction, page-to-URL mapping, Gemini classification, and saved settings data." />
             </a>
-            <figcaption class="caption">Figure: Dataset construction workflow used to extract and normalize platform privacy settings.</figcaption>
+            <figcaption class="caption">Figure: Pipeline that extracts settings information from crawler screenshots, classifies each setting into semantic categories, and outputs per-setting records in a CSV for downstream analysis, visualization, and actuation.</figcaption>
           </figure>
         </div>
 
@@ -171,12 +197,6 @@
             <li>Designed for fast inspection by both users (configuration support) and researchers (comparative analysis).</li>
             <li>Backed by the normalized schema so interface differences do not break the high-level view.</li>
           </ul>
-          <figure class="figure">
-            <a href="assets/dashboard_placeholder.png" target="_blank" rel="noopener">
-              <img class="media" src="assets/dashboard_placeholder.png" alt="Interactive dashboard treemap placeholder for comparing privacy settings across platforms." />
-            </a>
-            <figcaption class="caption">Figure: Interactive treemap dashboard (size encodes metric; color encodes platform) with zoom, filter, search, and guided mode.</figcaption>
-          </figure>
         </div>
       </div>
 
@@ -191,26 +211,54 @@
           <li><strong>Verifier:</strong> confirms that the intended setting state was reached and flags ambiguities.</li>
           <li>Supports confirmation dialogs and heterogeneous layouts without platform-specific hard-coded scripts.</li>
         </ul>
-        <figure class="figure figure-compact">
-          <a href="assets/chatbot_placeholder.png" target="_blank" rel="noopener">
-            <img class="media" src="assets/chatbot_placeholder.png" alt="Chatbot and browser agent workflow placeholder showing planner, executor, and verifier stages." />
+        <figure class="figure figure-readable figure-screenshot">
+          <a href="assets/chatbot.png" target="_blank" rel="noopener">
+            <img class="media" src="assets/chatbot.png" alt="Agentic privacy assistant interface for selecting platforms, browsing privacy categories, and issuing privacy-setting commands." />
           </a>
-          <figcaption class="caption">Figure: Agentic chatbot interaction flow for planning, executing, and verifying privacy setting changes.</figcaption>
+          <figcaption class="caption">Figure: Agentic privacy assistant interface used to locate and modify privacy settings. The system interprets user commands, generates structured action plans, and executes user-interface interactions through a browser automation framework.</figcaption>
+        </figure>
+        <figure class="figure figure-readable figure-diagram">
+          <a href="assets/chatbot_flow.png" target="_blank" rel="noopener">
+            <img class="media" src="assets/chatbot_flow.png" alt="System architecture diagram showing user request, Gemini-assisted data loading, setting selection, web execution, and save-and-return flow." />
+          </a>
+          <figcaption class="caption">Figure: Architecture used to safely modify privacy settings. User selection of settings allows the Gemini-enabled bot to leverage the database for settings changes before executing actions on the web and returning the result.</figcaption>
         </figure>
       </div>
 
       <div class="card callout">
         <h3>Evaluation / Validation</h3>
         <p>
-          Evaluation in this stage emphasizes system behavior and workflow reliability rather than final production deployment metrics. We validate whether the pipeline can consistently discover settings, preserve meaningful structure, and execute requested changes with verification.
+          Validation is documented in the companion <a href="https://github.com/sebastianferragut/DSC180A_PrivacyProject" target="_blank" rel="noopener">project repository</a>. We validated core components through automated tests, visible reporting artifacts, and reproducible repository workflows.
         </p>
         <ul>
-          <li>Pipeline validation: extracted settings are categorized and stored in a form usable by the dashboard and agent.</li>
-          <li>Execution validation: the agent successfully navigates settings interfaces and confirmation flows.</li>
-          <li>Verifier checks reduce silent failures by confirming post-action state whenever possible.</li>
-          <li>High-level results indicate agentic automation is feasible for scalable privacy configuration support.</li>
+          <li>Automated tests check key schema, mapping, and output assumptions so extraction and downstream data products stay structurally consistent.</li>
+          <li>Repository-level workflows surface validation in a repeatable way, making it easier to inspect whether tests and reports are present and passing.</li>
         </ul>
       </div>
+    </section>
+
+    <!-- DEMO -->
+    <section id="demo" class="section container">
+      <div class="section-head">
+        <h2>Demo</h2>
+        <p class="muted">
+          This section is prepared for the YouTube walkthrough embed.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Demo Video</h3>
+        <p class="muted">
+          The embedded demo will appear here once the YouTube link is added.
+        </p>
+      </div>
+
+      <!-- Replace VIDEO_URL_HERE with the provided YouTube embed URL. -->
+      <!--
+      <div class="card callout">
+        <iframe src="VIDEO_URL_HERE" title="Agentic Privacy Control Center Demo" loading="lazy" allowfullscreen></iframe>
+      </div>
+      -->
     </section>
 
     <!-- DISCUSSION / CONCLUSION -->
@@ -224,7 +272,7 @@
 
       <div class="grid">
         <div class="card">
-          <h3>Key Results and Insights</h3>
+          <h3 id="results">Key Results and Insights</h3>
           <p>
             The prototype shows that privacy settings can be treated as a cross-platform structured problem rather than a collection of one-off manual workflows. Combining normalization with agentic execution creates a useful bridge between privacy analysis and direct configuration.
           </p>
@@ -236,27 +284,27 @@
         </div>
 
         <div class="card">
-          <h3>Limitations</h3>
+          <h3 id="limitations">Limitations</h3>
           <ul>
             <li>Prototype coverage is limited by platform variation, UI changes, and access/authentication constraints.</li>
-            <li>Vision/LLM-based interpretation may misread labels or intent in ambiguous interfaces.</li>
+            <li>Vision/large language model (LLM)-based interpretation may misread labels or intent in ambiguous interfaces.</li>
             <li>Validation is currently high-level and should be expanded with broader platform and task benchmarks.</li>
             <li>Safety and rollback mechanisms need stronger guarantees before production deployment.</li>
           </ul>
         </div>
       </div>
 
-      <div class="card callout figure-block">
-        <figure class="figure">
-          <a href="assets/compare_platforms.png" target="_blank" rel="noopener">
-            <img class="media" src="assets/compare_platforms.png" alt="Comparison chart of account deletion friction and notification control volume across major platforms." />
+      <div id="discussion-figure" class="card callout figure-block">
+        <figure class="figure figure-readable figure-chart">
+          <a href="assets/comparing_user_effort.png" target="_blank" rel="noopener">
+            <img class="media" src="assets/comparing_user_effort.png" alt="Chart comparing clicks required to delete an account versus mean clicks needed to access privacy settings across multiple platforms." />
           </a>
-          <figcaption class="caption figure-caption">Figure: Comparison of account deletion friction and notification control volume across major platforms.</figcaption>
+          <figcaption class="caption figure-caption">Figure: Comparison of user effort required to delete an account versus access privacy settings across Meta, LinkedIn, and TwitterX, highlighting how deletion often requires substantially more steps.</figcaption>
         </figure>
 
         <h3>Account Deletion vs. Privacy Friction</h3>
         <p>
-          In FTC v. Amazon.com, Inc., the FTC alleged that Amazon intentionally designed the Prime cancellation flow to be multi-step and confusing in order to deter users from canceling. This raises a broader ethical question: at what point does user friction become manipulation? Our comparison of deletion click depth versus privacy access depth highlights asymmetries in user effort that may indicate intentional design bias.
+          In U.S. Federal Trade Commission (FTC) v. Amazon.com, Inc., the FTC alleged that Amazon intentionally designed the Prime cancellation flow to be multi-step and confusing in order to deter users from canceling. This raises a broader ethical question: at what point does user friction become manipulation? Our comparison of deletion click depth versus privacy access depth highlights asymmetries in user effort that may indicate intentional design bias.
         </p>
 
         <h3>Notification Volume vs. Privacy Strength</h3>
@@ -266,10 +314,27 @@
       </div>
 
       <div class="card">
-        <h3>Future Work</h3>
+        <h3 id="future-work">Future Work</h3>
         <p>
           Future work includes expanding platform coverage, improving semantic labeling quality, strengthening verifier and rollback behavior, and running more systematic evaluations of success rate, robustness, and user trust. A longer-term direction is integrating policy-aware guidance so the system can explain tradeoffs between convenience, visibility, and data sharing before applying changes.
         </p>
+      </div>
+
+      <div class="card callout">
+        <h3>Tools &amp; Data Credits</h3>
+        <ul>
+          <li><strong>Playwright:</strong> browser automation for deterministic and agentic interaction flows.</li>
+          <li><strong>Chainlit:</strong> chat interface used to run and inspect interactive agent workflows.</li>
+          <li><strong>Gemini (Google):</strong> model support for extraction and agent reasoning tasks.</li>
+          <li><strong>Case-study evidence:</strong> public platform settings interfaces and FTC Prime-cancellation case materials.</li>
+        </ul>
+        <h3>References</h3>
+        <ol class="references">
+          <li><a href="https://www.ftc.gov/news-events/news/press-releases/2023/06/ftc-sues-amazon-enrolling-consumers-prime-without-consent-sabotaging-their-attempts-cancel" target="_blank" rel="noopener">FTC press release on FTC v. Amazon Prime cancellation case</a></li>
+          <li><a href="https://playwright.dev/" target="_blank" rel="noopener">Playwright documentation</a></li>
+          <li><a href="https://docs.chainlit.io/" target="_blank" rel="noopener">Chainlit documentation</a></li>
+          <li><a href="https://ai.google.dev/" target="_blank" rel="noopener">Google AI / Gemini developer documentation</a></li>
+        </ol>
       </div>
 
       <!-- Optional: add a responsive image later -->
