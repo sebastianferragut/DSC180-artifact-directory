@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="title">
+  <title id="title">Dataset icon</title>
+  <ellipse cx="24" cy="12" rx="12" ry="5" fill="#0f172a" stroke="#f97316" stroke-width="3"/>
+  <path d="M12 12v18c0 2.8 5.4 5 12 5s12-2.2 12-5V12M12 21c0 2.8 5.4 5 12 5s12-2.2 12-5" fill="none" stroke="#fdba74" stroke-width="3" stroke-linecap="round"/>
+</svg>

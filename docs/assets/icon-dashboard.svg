@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="title">
+  <title id="title">Dashboard icon</title>
+  <rect x="7" y="8" width="34" height="32" rx="4" fill="#0f172a" stroke="#22c55e" stroke-width="3"/>
+  <path d="M17 17h14M17 24h8M17 31h6" fill="none" stroke="#86efac" stroke-width="3" stroke-linecap="round"/>
+  <path d="M31 30l3-4 4 6" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

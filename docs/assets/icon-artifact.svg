@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="title">
+  <title id="title">Artifact repository icon</title>
+  <path d="M24 7l16 8v18l-16 8-16-8V15z" fill="#1f2937" stroke="#a78bfa" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M8 15l16 8 16-8M24 23v18" fill="none" stroke="#ddd6fe" stroke-width="3" stroke-linejoin="round"/>
+</svg>

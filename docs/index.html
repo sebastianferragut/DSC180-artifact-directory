@@ -8,6 +8,14 @@
   <title>Agentic Privacy Control Center</title>
 
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    (() => {
+      const storedTheme = localStorage.getItem("theme");
+      const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = storedTheme || (systemDark ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
 </head>
 
 <body>
@@ -18,22 +26,28 @@
       <a class="brand" href="#top">Home</a>
 
       <nav class="nav" aria-label="Primary">
+        <a href="#demo">Demo</a>
         <a href="#intro">Introduction/Abstract</a>
         <a href="#methods">Methods</a>
-        <a href="#demo">Demo</a>
         <a href="#discussion">Discussion/Conclusion</a>
         <a href="#team">Meet the Team</a>
       </nav>
 
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
-        ☰
-      </button>
+      <div class="topbar-actions">
+        <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch to light mode" title="Toggle light and dark mode">
+          <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+          <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+        </button>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">
+          ☰
+        </button>
+      </div>
     </div>
 
     <div class="mobile-nav container" id="mobileNav">
+      <a href="#demo">Demo</a>
       <a href="#intro">Introduction/Abstract</a>
       <a href="#methods">Methods</a>
-      <a href="#demo">Demo</a>
       <a href="#discussion">Discussion/Conclusion</a>
       <a href="#team">Meet the Team</a>
     </div>
@@ -53,10 +67,12 @@
 
         <div class="cta-row">
           <!-- report.pdf is in repo root; from /docs it's ../report.pdf -->
-          <a class="btn" href="https://github.com/sebastianferragut/DSC180-artifact-directory/blob/main/report.pdf" target="_blank" rel="noopener">View Report (PDF)</a>
-          <a class="btn btn-ghost" href="https://github.com/sebastianferragut/DSC180A_PrivacyProject" target="_blank" rel="noopener">GitHub Repo</a>
-          <a class="btn btn-ghost" href="https://sebastianferragut.github.io/DSC180A_PrivacyProject/explore/" target="_blank" rel="noopener">Visualization Dashboard</a>
-          <a class="btn btn-ghost" href="https://github.com/sebastianferragut/DSC180A_PrivacyProject/blob/main/database/data/screenshot_crawler_extracted_settings.csv" target="_blank" rel="noopener">Privacy Settings Dataset</a>
+          <a class="btn" href="https://github.com/sebastianferragut/DSC180-artifact-directory/blob/main/report.pdf" target="_blank" rel="noopener"><img class="btn-icon-img" src="assets/icon-report.svg" alt="Report document icon" /><span>Report PDF</span></a>
+          <a class="btn btn-ghost" href="https://github.com/sebastianferragut/DSC180A_PrivacyProject" target="_blank" rel="noopener"><img class="btn-icon-img" src="assets/icon-code.svg" alt="Code repository icon" /><span>Code Repo</span></a>
+          <a class="btn btn-ghost" href="https://github.com/sebastianferragut/DSC180-artifact-directory" target="_blank" rel="noopener"><img class="btn-icon-img" src="assets/icon-artifact.svg" alt="Artifact repository icon" /><span>Artifact Repo</span></a>
+          <a class="btn btn-ghost" href="https://sebastianferragut.github.io/DSC180A_PrivacyProject/explore/" target="_blank" rel="noopener"><img class="btn-icon-img" src="assets/icon-dashboard.svg" alt="Visualization dashboard icon" /><span>Dashboard</span></a>
+          <a class="btn btn-ghost" href="https://github.com/sebastianferragut/DSC180A_PrivacyProject/blob/main/database/data/screenshot_crawler_extracted_settings.csv" target="_blank" rel="noopener"><img class="btn-icon-img" src="assets/icon-dataset.svg" alt="Dataset icon" /><span>Dataset CSV</span></a>
+          <a class="btn btn-ghost btn-video" href="https://youtu.be/o0byYZFKbng" target="_blank" rel="noopener"><img class="btn-icon-img" src="assets/icon-video.svg" alt="Demo video icon" /><span>Demo Video</span></a>
         </div>
 
         <div class="card key-results-strip">
@@ -69,18 +85,32 @@
           </ul>
         </div>
       </div>
+    </section>
 
-      <!-- Optional: Add a hero image later (keep it lightweight) -->
-      <!-- <img class="media hero-img" src="assets/hero.png" alt="Project figure preview" /> -->
-      <div class="hero-card card">
-        <h3>Quick Links</h3>
-        <ul class="link-list">
-          <li><a href="https://github.com/sebastianferragut/DSC180-artifact-directory" target="_blank" rel="noopener">Website Repo</a></li>
-          <li><a href="https://youtu.be/o0byYZFKbng" target="_blank" rel="noopener">Demo Video</a></li>
-          <li><a href="https://sebastianferragut.github.io/DSC180A_PrivacyProject/explore/" target="_blank" rel="noopener">Visualization Dashboard</a></li>
-          <li><a href="https://github.com/sebastianferragut/DSC180A_PrivacyProject/blob/main/database/data/screenshot_crawler_extracted_settings.csv" target="_blank" rel="noopener">Privacy Settings Dataset</a></li>
-        </ul>
-        </ul>
+    <!-- DEMO -->
+    <section id="demo" class="section container">
+      <div class="section-head">
+        <h2>Demo</h2>
+        <p class="muted">
+          Watch the end-to-end walkthrough of the dashboard and agent workflow.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Demo Video</h3>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/o0byYZFKbng"
+            title="Agentic Privacy Control Center Demo"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <p class="muted small">
+          The <a href="https://github.com/sebastianferragut/DSC180A_PrivacyProject" target="_blank" rel="noopener">code repository</a> is linked above and includes detailed instructions for installing and running the Agentic Privacy Control Center.
+        </p>
       </div>
     </section>
 
@@ -251,33 +281,6 @@
           <li>Repository-level workflows surface validation in a repeatable way, making it easier to inspect whether tests and reports are present and passing.</li>
           <li>Coverage reports show platform breadth spanning Facebook, LinkedIn, Reddit, Spotify, and TwitterX.</li>
         </ul>
-      </div>
-    </section>
-
-    <!-- DEMO -->
-    <section id="demo" class="section container">
-      <div class="section-head">
-        <h2>Demo</h2>
-        <p class="muted">
-          Watch the end-to-end walkthrough of the dashboard and agent workflow.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Demo Video</h3>
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/o0byYZFKbng"
-            title="Agentic Privacy Control Center Demo"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <p class="muted small">
-          The <a href="https://github.com/sebastianferragut/DSC180A_PrivacyProject" target="_blank" rel="noopener">code repository</a> is linked at the top of this site and includes detailed instructions for installing and running the Agentic Privacy Control Center.
-        </p>
       </div>
     </section>
 
@@ -455,8 +458,29 @@
   </footer>
 
   <script>
+    const root = document.documentElement;
+    const themeBtn = document.getElementById("themeBtn");
     const menuBtn = document.getElementById("menuBtn");
     const mobileNav = document.getElementById("mobileNav");
+
+    const syncThemeButton = () => {
+      if (!themeBtn) return;
+      const theme = root.getAttribute("data-theme") || "dark";
+      const nextTheme = theme === "dark" ? "light" : "dark";
+      themeBtn.setAttribute("aria-label", `Switch to ${nextTheme} mode`);
+      themeBtn.setAttribute("title", `Switch to ${nextTheme} mode`);
+    };
+
+    if (themeBtn) {
+      syncThemeButton();
+      themeBtn.addEventListener("click", () => {
+        const current = root.getAttribute("data-theme") || "dark";
+        const next = current === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+        syncThemeButton();
+      });
+    }
 
     if (menuBtn && mobileNav) {
       menuBtn.addEventListener("click", () => {
