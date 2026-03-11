@@ -54,6 +54,11 @@ html { scroll-behavior: smooth; }
     animation: none;
     background-position: 45% 50%;
   }
+  .btn-dashboard::before {
+    animation: none;
+    opacity: 0.22;
+    transform: scale(1);
+  }
 }
 
 body {
@@ -256,6 +261,8 @@ html[data-theme="light"] .theme-icon-moon {
   align-items: center;
   gap: 8px;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
   padding: 10px 14px;
   border-radius: 14px;
   background: var(--btn-primary-bg);
@@ -265,14 +272,50 @@ html[data-theme="light"] .theme-icon-moon {
   text-decoration: none;
 }
 
+.btn > * {
+  position: relative;
+  z-index: 1;
+}
+
 .btn-icon-img {
   width: 18px;
   height: 18px;
   flex: 0 0 18px;
 }
+
+.btn-report {
+  background: transparent;
+  border-color: var(--border);
+  box-shadow: none;
+}
+
+.btn-report:hover {
+  background: var(--surface-soft);
+}
+
 .btn-ghost {
   background: transparent;
   border: 1px solid var(--border);
+}
+
+.btn-dashboard {
+  isolation: isolate;
+}
+
+.btn-dashboard::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  z-index: 0;
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.34) 0%, rgba(56, 189, 248, 0.18) 30%, rgba(0, 0, 0, 0) 62%);
+  opacity: 0.18;
+  transform: scale(0.78);
+  animation: dashboard-pop 2.6s ease-in-out infinite;
+}
+
+.btn-dashboard span:last-child {
+  color: #d9ffe8;
+  text-shadow: 0 0 14px rgba(74, 222, 128, 0.16);
 }
 
 .btn-video {
@@ -306,6 +349,17 @@ html[data-theme="light"] .theme-icon-moon {
 @keyframes demo-sheen {
   from { background-position: 0% 50%; }
   to { background-position: 220% 50%; }
+}
+
+@keyframes dashboard-pop {
+  0%, 100% {
+    opacity: 0.14;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.34;
+    transform: scale(1.04);
+  }
 }
 
 .meta-row {
