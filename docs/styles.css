@@ -318,6 +318,11 @@ html[data-theme="light"] .theme-icon-moon {
   text-shadow: 0 0 14px rgba(74, 222, 128, 0.16);
 }
 
+html[data-theme="light"] .btn-dashboard span:last-child {
+  color: #111827;
+  text-shadow: none;
+}
+
 .btn-video {
   border-color: rgba(239, 68, 68, 0.45);
   background: linear-gradient(180deg, rgba(127, 29, 29, 0.28), rgba(69, 10, 10, 0.22));
@@ -344,6 +349,22 @@ html[data-theme="light"] .theme-icon-moon {
   color: transparent;
   -webkit-text-fill-color: transparent;
   animation: demo-sheen 2.8s linear infinite;
+}
+
+html[data-theme="light"] .btn-video span:last-child {
+  background-image: linear-gradient(
+    110deg,
+    #7f1d1d 0%,
+    #111827 18%,
+    #991b1b 34%,
+    #dc2626 50%,
+    #111827 66%,
+    #7f1d1d 82%,
+    #000000 100%
+  );
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
 }
 
 @keyframes demo-sheen {
